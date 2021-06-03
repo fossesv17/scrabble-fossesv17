@@ -1,8 +1,7 @@
 @file:Suppress("SpellCheckingInspection")
 
-group = "cl.uchile.dcc.scrabble"
-version = "0.1-ALPHA.1"
-
+group "cl.uchile.dcc"
+version "1.0-SNAPSHOT"
 
 val javaFXVersion: String by project
 val jbAnnotationsVersion: String by project
@@ -14,6 +13,7 @@ plugins {
     id("application")
     id("org.openjfx.javafxplugin") version "0.0.8"
     id("jacoco")
+    id("org.jetbrains.kotlin.jvm") version "1.5.10"
 }
 
 application {
@@ -36,19 +36,14 @@ dependencies {
         name = "annotations",
         version = jbAnnotationsVersion
     )
-    testImplementation(
-        group = "org.junit.jupiter", name = "junit-jupiter-api",
-        version = junitVersion
-    )
-    testRuntimeOnly(
-        group = "org.junit.jupiter", name = "junit-jupiter-engine",
-        version = junitVersion
-    )
     implementation(
         group = "org.apache.commons",
         name = "commons-lang3",
         version = commonsLangVersion
     )
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
 javafx {
