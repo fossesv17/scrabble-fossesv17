@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.Tipos.Numbers.ISNum;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,15 +37,6 @@ public class SFloatTest {
     }
 
     @Test
-    void SconcatTest() {
-        ISString[] con = {new SString("ola"), new SInt(3), new SFloat(1.5),
-                new SBin("101"), new SBool(true)};
-        for (ISString isString : con) {
-            var res = sFloat.Sconcat(isString);
-            assertNull(res);
-        }
-    }
-    @Test
     void TrasformationTest(){
         //transformation to string
         var floatToString = sFloat.StoString();
@@ -73,7 +68,7 @@ public class SFloatTest {
             var addRes = sFloat.Suma(Operand[i]);
             var subRes = sFloat.Resta(Operand[i]);
             var mulRes = sFloat.Multi(Operand[i]);
-            var divRes = sFloat.Div(Operand[i]);
+            var divRes = sFloat.Divn(Operand[i]);
             //asserts for suma
             assertEquals(sumExp,addRes);
             assertEquals(sumExp.hashCode(),addRes.hashCode());

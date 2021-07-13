@@ -75,3 +75,11 @@ every type as long as an ScrabbleString makes the call on other types, not the o
 
 The project has been developed to this point for now waiting for further instructions to continue working on it. 
 
+### 3rd assignment
+For this stage the objective was to represent operations as trees that contained Scrabble types as arguments for every operation.
+Every operation was successfully implemented this way except for transformations on tree nodes for now
+
+### 4th assignment
+(WIP)
+For the 4th assignment the idea was to implement a system to declare and save variables with the purpose of saving memory
+this is yet to be implemented

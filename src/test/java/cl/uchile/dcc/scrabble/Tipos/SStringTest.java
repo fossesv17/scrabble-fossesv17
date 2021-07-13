@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,21 +45,19 @@ public class SStringTest {
         assertNotEquals(diffSString.hashCode(),result.hashCode());
     }
     @Test
-    void SconcatTest(){
+    void StringSumTest(){
         //Concatenation with an SString
         var concatSString = new SString(" mundo");
-        var result = sString.Sconcat(concatSString);
+        var result = sString.Suma(concatSString);
         var expectedSString = new SString("hola mundo");
-        assertEquals(expectedSString,result,"Expected " + expectedSString.toString()
-                                                    + "got " + result.toString());
+        assertEquals(expectedSString,result);
         assertEquals(expectedSString.hashCode(),result.hashCode());
         assertNotEquals(concatSString,result);
         assertNotEquals(concatSString.hashCode(),result.hashCode());
-
         //Concatenation with every other type
-        ISString[] con = {new SFloat(1.5),new SBin("101"),new SInt(2), new SBool(true)};
+        IStype[] con = {new SFloat(1.5),new SBin("101"),new SInt(2), new SBool(true)};
         for (int i=0;i<con.length;i++){
-            var res = sString.Sconcat(con[i]);
+            var res = sString.Suma(con[i]);
             var expectedSS = new SString(sString.getString().concat(con[i].StoString().getString()));
             assertEquals(expectedSS,res);
             assertEquals(expectedSS.hashCode(),res.hashCode());

@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.Tipos.Logical.ISLogic;
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,15 +34,6 @@ public class SBoolTest {
         assertNotEquals(bool.hashCode(),fbool.hashCode());
     }
 
-    @Test
-    void SconcatTest(){
-        ISString[] con = {new SString("ola"),new SInt(3),new SFloat(1.5),
-                new SBin("101"), new SBool(true)};
-        for (ISString isString : con) {
-            var res = tbool.Sconcat(isString);
-            assertNull(res);
-        }
-    }
     @Test
     void TransformationTest(){
         var res = tbool.StoString();

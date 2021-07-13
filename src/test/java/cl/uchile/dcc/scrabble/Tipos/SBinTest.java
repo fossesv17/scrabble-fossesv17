@@ -1,5 +1,11 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.Tipos.Logical.ISLogic;
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.ISNum;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,15 +40,7 @@ public class SBinTest {
         assertNotEquals(bin2.hashCode(),sbin.hashCode());
     }
 
-    @Test
-    void SconcatTest(){
-        ISString[] con = {new SString("ola"),new SInt(3),new SFloat(1.5),
-                new SBin("101"), new SBool(true)};
-        for (int i=0;i< con.length;i++){
-            var res = sbin.Sconcat(con[i]);
-            assertNull(res);
-        }
-    }
+
 
     @Test
     void TransformationTest(){
@@ -71,6 +69,8 @@ public class SBinTest {
             var orRes = sbin.or(lop[i]);
             assertEquals(andExp[i],andRes);
             assertEquals(andExp[i].hashCode(),andRes.hashCode());
+            assertEquals(orExp[i],orRes);
+            assertEquals(orExp[i].hashCode(),orRes.hashCode());
         }
         //num op
 
@@ -80,15 +80,15 @@ public class SBinTest {
         ISNum[] mulExp = {new SBin("0101"),new SBin("01010")};
         ISNum[] divExp = {new SBin("0101"),new SBin("010")};
         var opFloat = new SFloat(1.0);
-        ISNum[] binWithFloatOp = {sbin.Suma(opFloat),sbin.Resta(opFloat),sbin.Multi(opFloat),sbin.Div(opFloat)};
-        for (ISNum isNum : binWithFloatOp) {
-            assertNull(isNum);
+        IStype[] binWithFloatOp = {sbin.Suma(opFloat),sbin.Resta(opFloat),sbin.Multi(opFloat),sbin.Divn(opFloat)};
+        for (IStype num : binWithFloatOp) {
+            assertNull(num);
         }
         for (int i=0;i< aop.length;i++){
             var sumRes = sbin.Suma(aop[i]);
             var subRes = sbin.Resta(aop[i]);
             var mulRes = sbin.Multi(aop[i]);
-            var divRes = sbin.Div(aop[i]);
+            var divRes = sbin.Divn(aop[i]);
             //suma asserts
             assertEquals(sumExp[i],sumRes);
             assertEquals(sumExp[i].hashCode(),sumRes.hashCode());
@@ -103,4 +103,5 @@ public class SBinTest {
             assertEquals(divExp[i].hashCode(),divRes.hashCode());
         }
     }
+
 }
