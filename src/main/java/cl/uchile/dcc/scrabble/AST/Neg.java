@@ -10,6 +10,7 @@ public class Neg implements AST{
     public AST getNode() {
         return Node;
     }
+
     public IStype eval() {
         IStype res = Node.eval();
         if (res == null) {

@@ -59,6 +59,13 @@ public class SBinTest {
     }
 
     @Test
+    void NegTest(){
+        var binN = new SBin("010");
+        var NegBin = binN.neg();
+        var exp = new SBin("101");
+        assertEquals(exp, NegBin);
+    }
+    @Test
     void OperationsTest(){
         //logical op
         ISLogic[] lop = {new SBool(false),new SBin("0110")};

@@ -1,11 +1,12 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.AST.AST;
 import cl.uchile.dcc.scrabble.Tipos.DefaultOper.DefaultOper;
 
 /**
  * Interface to represent Scrabble String type
  */
-public interface IStype extends DefaultOper {
+public interface IStype extends DefaultOper,AST  {
     /**
      * Method to convert any Scrabble type into an Scrabble String
      */
@@ -65,4 +66,9 @@ public interface IStype extends DefaultOper {
      * @return the value negated
      */
     IStype neg();
+
+    /**
+     * method to convert to binary
+     * @return
+     */
 }

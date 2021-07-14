@@ -30,7 +30,7 @@ public class SBin extends AbstractSScrable implements ISNum, ISLogic {
     public IStype neg() {
         String nb = "";
         for (int i=0;i<bin.length();i++){
-            nb=nb.concat(Character.toString(bin.charAt(i)=='1'? 0:1));
+            nb=nb.concat(Character.toString(bin.charAt(i)=='1'? '0' : '1'));
         }
         return new SBin(nb);
     }

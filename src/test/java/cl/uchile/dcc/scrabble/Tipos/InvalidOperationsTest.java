@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.AST.AST;
 import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
@@ -7,6 +8,7 @@ import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class InvalidOperationsTest {
@@ -130,5 +132,13 @@ public class InvalidOperationsTest {
             assertNull(SF.or(op));
             assertNull(SS.or(op));
         }
+    }
+
+    @Test
+    void transTest(){
+        IStype a = new SBool(true);
+        IStype b = new SInt(1);
+        AST c = new SBin("010");
+        assertEquals(new SInt(2),c.eval().toInt());
     }
  }
