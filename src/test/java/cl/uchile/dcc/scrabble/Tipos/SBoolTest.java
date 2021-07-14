@@ -53,9 +53,13 @@ public class SBoolTest {
         ISLogic[] expOr = {new SBool(true),new SBin("1111")};
         //assert negation
         var negRes = tbool.neg();
+        var negRes2 = fbool.neg();
         var negExp = new SBool(false);
+        var negExp2 = new SBool(true);
         assertEquals(negExp,negRes);
         assertEquals(negExp.hashCode(),negRes.hashCode());
+        assertEquals(negExp2,negRes2);
+        assertEquals(negExp2.hashCode(),negRes2.hashCode());
 
         for (int i=0;i<2;i++){
             var andRes = tbool.and(op[i]);

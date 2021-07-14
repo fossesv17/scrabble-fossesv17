@@ -68,6 +68,13 @@ public class SBinTest {
     @Test
     void OperationsTest(){
         //logical op
+        var aar = sbin.and(new SBool(true));
+        assertEquals(sbin,aar);
+        assertEquals(sbin.hashCode(),aar.hashCode());
+        var aor = sbin.or(new SBool(true));
+        var eor = new SBin("1111");
+        assertEquals(eor,aor);
+        assertEquals(eor.hashCode(),aor.hashCode());
         ISLogic[] lop = {new SBool(false),new SBin("0110")};
         ISLogic[] andExp = {new SBin("0000"),new SBin("0100")};
         ISLogic[] orExp = {new SBin("0101"),new SBin("0111")};

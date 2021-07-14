@@ -16,7 +16,6 @@ public interface IStype extends DefaultOper,AST  {
      * method to concatenate Scrabble Strings with every other Scrabble type
      * receives the Scrabble type to concatenate and returns a new Scrabble String
      */
-    @Override
     SString SumString(IStype S);
 
     /**

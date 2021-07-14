@@ -5,11 +5,12 @@ import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
-import cl.uchile.dcc.scrabble.Tipos.SString;
+
 
 
 /**
- * interface to return null for all invalid operations with default methods
+ * interface to return null for all invalid operations with default methods, since valid operations
+ * will get overridden
  */
 public interface DefaultOper {
     default IStype toBool() { return null; }
@@ -18,9 +19,6 @@ public interface DefaultOper {
     }
     default IStype toInt(){ return null; }
     default IStype toBin(){
-        return null;
-    }
-    default IStype StoString(){
         return null;
     }
     default IStype BinSum(SBin o){
@@ -95,9 +93,6 @@ public interface DefaultOper {
     default IStype boolOr(SBool o){
         return null;
     }
-    default IStype SumString(IStype o){
-        return null;
-    }
     default IStype RestaString(IStype o){
         return null;
     }
@@ -113,5 +108,4 @@ public interface DefaultOper {
     default IStype orString(IStype o){
         return null;
     }
-
 }

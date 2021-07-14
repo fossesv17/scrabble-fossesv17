@@ -44,8 +44,8 @@ public class TestAST {
         assertNull(d.eval());
         var e = new Add(SB,SF);
         assertNull(e.eval());
-        var f = new Add(SB.toInt(),SI);
-        var fac = f.eval();
+        var f = new Add(new Add(SBL,SS),SBL);
+        assertNull(f.eval());
 
     }
     @Test
@@ -60,6 +60,8 @@ public class TestAST {
         assertEquals(bexpected,bactual);
         var c = new Sub(SS,SI);
         assertNull(c.eval());
+        var d = new Sub(new Sub(SBL,SS),SS);
+        assertNull(d.eval());
     }
 
     @Test
@@ -74,6 +76,8 @@ public class TestAST {
         assertEquals(bex,bac);
         var c = new Mul(SS,SF);
         assertNull(c.eval());
+        var d = new Mul(SBL,new Mul(SS,SB));
+        assertNull(d.eval());
     }
 
     @Test
@@ -88,6 +92,8 @@ public class TestAST {
         assertEquals(bex,bac);
         var c = new Div(SS,SI);
         assertNull(c.eval());
+        var d = new Div(new Div(SS,SBL),SB);
+        assertNull(d.eval());
     }
 
     @Test
@@ -102,6 +108,8 @@ public class TestAST {
         assertEquals(bex,bac);
         var c = new And(SS,SF);
         assertNull(c.eval());
+        var d = new And(new And(SF,SI),new SBool(true));
+        assertNull(d.eval());
     }
 
     @Test
@@ -116,6 +124,8 @@ public class TestAST {
         assertEquals(bex,bac);
         var c = new Or(SS,SF);
         assertNull(c.eval());
+        var d = new Or(new Or(SF,SI),SF);
+        assertNull(d.eval());
     }
 
     @Test
@@ -130,6 +140,8 @@ public class TestAST {
         assertEquals(bex,bac);
         var c = new Neg(SS);
         assertNull(c.eval());
+        var d = new Neg(new Add(SBL,SS));
+        assertNull(d.eval());
     }
 
     @Test

@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
-import cl.uchile.dcc.scrabble.AST.AST;
 import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
 import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
@@ -8,7 +7,7 @@ import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class InvalidOperationsTest {
@@ -70,7 +69,12 @@ public class InvalidOperationsTest {
         var r9 = SB.Resta(SS);
         var r10 = SB.Resta(SBL);
         var r11 = SB.Resta(SF);
-        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11};
+        var r12 = SS.Resta(SI);
+        var r13 = SS.Resta(SF);
+        var r14 = SS.Resta(SB);
+        var r15 = SS.Resta(SBL);
+        var r16 = SS.Resta(SS);
+        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16};
         for (IStype r : res){
             assertNull(r);
         }
@@ -90,7 +94,12 @@ public class InvalidOperationsTest {
         var r9 = SB.Multi(SS);
         var r10 = SB.Multi(SBL);
         var r11 = SB.Multi(SF);
-        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11};
+        var r12 = SS.Multi(SI);
+        var r13 = SS.Multi(SF);
+        var r14 = SS.Multi(SB);
+        var r15 = SS.Multi(SBL);
+        var r16 = SS.Multi(SS);
+        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16};
         for (IStype r : res){
             assertNull(r);
         }
@@ -110,7 +119,12 @@ public class InvalidOperationsTest {
         var r9 = SB.Divn(SS);
         var r10 = SB.Divn(SBL);
         var r11 = SB.Divn(SF);
-        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11};
+        var r12 = SS.Divn(SI);
+        var r13 = SS.Divn(SF);
+        var r14 = SS.Divn(SB);
+        var r15 = SS.Divn(SBL);
+        var r16 = SS.Divn(SS);
+        IStype[] res = {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16};
         for (IStype r : res){
             assertNull(r);
         }
@@ -123,6 +137,12 @@ public class InvalidOperationsTest {
             assertNull(SF.and(op));
             assertNull(SS.and(op));
         }
+        for (int i = 2; i<t.length;i++){
+            assertNull(SBL.and(t[i]));
+        }
+        for (int i=2;i<t.length;i++){
+            assertNull(SB.and(t[i]));
+        }
     }
 
     @Test
@@ -132,13 +152,26 @@ public class InvalidOperationsTest {
             assertNull(SF.or(op));
             assertNull(SS.or(op));
         }
+        for (int i = 2;i<t.length;i++){
+            assertNull(SBL.or(t[i]));
+        }
+        for (int i=2;i<t.length;i++){
+            assertNull(SB.or(t[i]));
+        }
     }
 
     @Test
-    void transTest(){
-        IStype a = new SBool(true);
-        IStype b = new SInt(1);
-        AST c = new SBin("010");
-        assertEquals(new SInt(2),c.eval().toInt());
+    void transformationTest(){
+        assertNull(SBL.toFloat());
+        assertNull(SBL.toInt());
+        assertNull(SBL.toBin());
+        assertNull(SB.toBool());
+        assertNull(SS.toBin());
+        assertNull(SS.toInt());
+        assertNull(SS.toFloat());
+        assertNull(SS.toBool());
+        for (int i = 1;i<t.length-1;i++){
+            assertNull(t[i].toBool());
+        }
     }
  }
