@@ -1,22 +1,27 @@
-package cl.uchile.dcc.scrabble.Tipos;
+package cl.uchile.dcc.scrabble.Tipos.Logical;
+
+import cl.uchile.dcc.scrabble.Tipos.AbstractSScrable;
+import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.SString;
 
 import java.util.Objects;
 
 /**
  * Scrabble bool class
  */
-public class SBool implements ISLogic, ISString{
+public class SBool extends AbstractSScrable implements ISLogic{
     private boolean val = true;
 
-    SBool(){}
-    SBool(boolean bool){
+    public SBool(){}
+    public SBool(boolean bool){
         val=bool;
     }
 
     /**
      * value getter for SBool
      */
-    boolean getVal(){
+    public boolean getVal(){
         return val;
     }
 
@@ -28,28 +33,23 @@ public class SBool implements ISLogic, ISString{
     /**
      * transformation to bool method
      */
+    @Override
     public SBool toBool(){
         return new SBool(val);
     }
 
+    //Invalid Operations
     @Override
-    public SString Sconcat(ISString a) {
-        return a.elseCon(this);
-    }
+    public IStype Suma(IStype o){return o.BoolSum(this);}
+    @Override
+    public IStype Resta(IStype o){return o.BoolResta(this);}
+    @Override
+    public IStype Multi(IStype o){return o.BoolMul(this);}
+    @Override
+    public IStype Divn(IStype o){return o.BoolDiv(this);}
 
     @Override
-    public SString SStringCon(SString S) {
-        String s1 = S.getString();
-        String s2 = Boolean.toString(val);
-        return new SString(s1.concat(s2));
-    }
-
-    @Override
-    public SString elseCon(ISString Ec) {
-        return null;
-    }
-    @Override
-    public ISLogic neg() {
+    public IStype neg() {
         if(val){
             return new SBool(false);
         }
@@ -59,12 +59,12 @@ public class SBool implements ISLogic, ISString{
     }
 
     @Override
-    public ISLogic and(ISLogic a) {
+    public IStype and(IStype a) {
         return a.boolAnd(this);
     }
 
     @Override
-    public ISLogic boolAnd(SBool Sb) {
+    public IStype boolAnd(SBool Sb) {
         if (Sb.getVal()==val){
             return new SBool(val);
         }
@@ -74,7 +74,7 @@ public class SBool implements ISLogic, ISString{
     }
 
     @Override
-    public ISLogic binAnd(SBin Sb) {
+    public IStype binAnd(SBin Sb) {
         String bin = Sb.getBin();
         if (val){
             return new SBin(bin);
@@ -89,12 +89,12 @@ public class SBool implements ISLogic, ISString{
     }
 
     @Override
-    public ISLogic or(ISLogic a) {
+    public IStype or(IStype a) {
         return a.boolOr(this);
     }
 
     @Override
-    public ISLogic boolOr(SBool Sb) {
+    public IStype boolOr(SBool Sb) {
         if (Sb.getVal()==val){
             return new SBool(val);
         }
@@ -104,7 +104,7 @@ public class SBool implements ISLogic, ISString{
     }
 
     @Override
-    public ISLogic binOr(SBin Sb) {
+    public IStype binOr(SBin Sb) {
         String bin = Sb.getBin();
         if (val){
             String ret="";
@@ -123,7 +123,7 @@ public class SBool implements ISLogic, ISString{
      */
     @Override
     public String toString() {
-        return "SBool{" + val + "}";
+        return Boolean.toString(val);
     }
 
     /**

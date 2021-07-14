@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.Tipos;
 
+import cl.uchile.dcc.scrabble.Tipos.Logical.ISLogic;
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,15 +35,6 @@ public class SBoolTest {
     }
 
     @Test
-    void SconcatTest(){
-        ISString[] con = {new SString("ola"),new SInt(3),new SFloat(1.5),
-                new SBin("101"), new SBool(true)};
-        for (ISString isString : con) {
-            var res = tbool.Sconcat(isString);
-            assertNull(res);
-        }
-    }
-    @Test
     void TransformationTest(){
         var res = tbool.StoString();
         var expected = new SString("true");
@@ -59,9 +53,13 @@ public class SBoolTest {
         ISLogic[] expOr = {new SBool(true),new SBin("1111")};
         //assert negation
         var negRes = tbool.neg();
+        var negRes2 = fbool.neg();
         var negExp = new SBool(false);
+        var negExp2 = new SBool(true);
         assertEquals(negExp,negRes);
         assertEquals(negExp.hashCode(),negRes.hashCode());
+        assertEquals(negExp2,negRes2);
+        assertEquals(negExp2.hashCode(),negRes2.hashCode());
 
         for (int i=0;i<2;i++){
             var andRes = tbool.and(op[i]);

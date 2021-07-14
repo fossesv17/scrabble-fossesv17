@@ -2,10 +2,10 @@ package cl.uchile.dcc.scrabble.Tipos;
 
 import java.util.Objects;
 
-public class SString implements ISString{
+public class SString extends AbstractSScrable implements IStype {
     private String string = "";
-    SString(){}
-    SString(String string){
+    public SString(){}
+    public SString(String string){
         this.string = string;
     }
 
@@ -16,27 +16,29 @@ public class SString implements ISString{
         return string;
     }
 
-    @Override
-    public SString Sconcat(ISString a) {
-        return a.SStringCon(this);
-    }
 
-    @Override
-    public SString SStringCon(SString S) {
-        String s1 = S.getString();
-        String s2 = string;
-        return new SString(s1.concat(s2));
-    }
-
-    @Override
-    public SString elseCon(ISString Ec) {
-        return null;
-    }
 
     @Override
     public SString StoString() {
         return new SString(string);
     }
+
+    /**
+     * String sum or concatenation
+     * @param S addend
+     * @return returns a SString with the result of the concatenation
+     */
+    public SString Suma(IStype S) {
+        return S.SumString(this);
+    }
+
+    //Invalid operations
+
+    public IStype Resta(IStype o){return o.RestaString(this); }
+    public IStype Multi(IStype o){return o.MulString(this);}
+    public IStype Divn(IStype o){return o.DivString(this);}
+    public IStype or(IStype o){return o.orString(this);}
+    public IStype and(IStype o){return o.andString(this);}
 
 
     /**
@@ -60,6 +62,6 @@ public class SString implements ISString{
 
     @Override
     public String toString() {
-        return "SString{" + string + "}";
+        return string;
     }
 }

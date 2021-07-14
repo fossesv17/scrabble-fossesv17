@@ -75,3 +75,13 @@ every type as long as an ScrabbleString makes the call on other types, not the o
 
 The project has been developed to this point for now waiting for further instructions to continue working on it. 
 
+### 3rd assignment
+For this stage the objective was to represent operations as trees that contained Scrabble types as arguments for every operation.
+Every operation was successfully implemented allowing to apply transformation on nodes and performing the corresponding operations
+on each of the nodes of the tree.
+
+### 4th assignment
+(WIP)
+For the 4th assignment the idea is to implement a system to declare and save variables with the purpose of saving memory
+the idea here is to make use of something between builder pattern and flyweight factory, since both of them allows to create
+Scrabble objects and save them in cache to save memory.

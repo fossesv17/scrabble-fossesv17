@@ -1,4 +1,8 @@
 package cl.uchile.dcc.scrabble.Tipos;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.ISNum;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,15 +36,6 @@ public class SIntTest {
         assertNotEquals(diffSInt.hashCode(),sInt.hashCode());
     }
 
-    @Test
-    void SconcatTest(){
-        ISString[] con = {new SString("ola"),new SInt(3),new SFloat(1.5),
-                          new SBin("101"), new SBool(true)};
-        for (ISString isString : con) {
-            var res = sInt.Sconcat(isString);
-            assertNull(res);
-        }
-    }
 
     @Test
     void TransformationTest(){
@@ -72,11 +67,12 @@ public class SIntTest {
         ISNum[] MulExpected = {new SInt(10),new SFloat(10.0),new SInt(10)};
         ISNum[] DivExpected = {new SInt(2),new SFloat(2.5),new SInt(2)};
 
+
         for (int i=0;i<3;i++){
             var addRes = sInt.Suma(Operand[i]);
             var subRes = sInt.Resta(Operand[i]);
             var mulRes = sInt.Multi(Operand[i]);
-            var divRes = sInt.Div(Operand[i]);
+            var divRes = sInt.Divn(Operand[i]);
             //asserts for Suma
             assertEquals(SumExpected[i],addRes,"Add Failed" + i);
             assertEquals(SumExpected[i].hashCode(),addRes.hashCode());

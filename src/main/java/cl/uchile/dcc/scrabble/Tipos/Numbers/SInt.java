@@ -1,12 +1,17 @@
-package cl.uchile.dcc.scrabble.Tipos;
+package cl.uchile.dcc.scrabble.Tipos.Numbers;
+
+import cl.uchile.dcc.scrabble.Tipos.AbstractSScrable;
+import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Tipos.SString;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SInt implements ISNum, ISString{
+public class SInt extends AbstractSScrable implements ISNum {
     private int val = 0;
-    SInt(){}
-    SInt(int value){
+
+    public SInt(){};
+    public SInt(int value){
         val=value;
     }
 
@@ -22,22 +27,6 @@ public class SInt implements ISNum, ISString{
         return new SString(Integer.toString(this.val));
     }
 
-    @Override
-    public SString Sconcat(ISString a) {
-        return a.elseCon(this);
-    }
-
-    @Override
-    public SString SStringCon(SString S) {
-        String s1 = S.getString();
-        String s2 = Integer.toString(val);
-        return new SString(s1.concat(s2));
-    }
-
-    @Override
-    public SString elseCon(ISString Ec) {
-        return null;
-    }
 
     @Override
     public SInt toInt() {
@@ -125,10 +114,15 @@ public class SInt implements ISNum, ISString{
         return String.valueOf(bc);
     }
 
+    //invalid op
+    public IStype and(IStype a){ return a.IntAnd(this);}
+    public IStype or(IStype a){ return a.IntOr(this);}
+
     @Override
-    public ISNum Suma(ISNum a) {
+    public IStype Suma(IStype a) {
         return a.IntSum(this);
     }
+
 
     @Override
     public ISNum FloatSum(SFloat Fa) {
@@ -148,7 +142,7 @@ public class SInt implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Resta(ISNum a) {
+    public IStype Resta(IStype a) {
         return a.IntResta(this);
     }
 
@@ -175,7 +169,7 @@ public class SInt implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Multi(ISNum a) {
+    public IStype Multi(IStype a) {
         return a.IntMul(this);
     }
 
@@ -202,7 +196,7 @@ public class SInt implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Div(ISNum a) {
+    public IStype Divn(IStype a) {
         return a.IntDiv(this);
     }
 
@@ -228,6 +222,9 @@ public class SInt implements ISNum, ISString{
         return new SFloat(v1/v2);
     }
 
+
+
+
     /**
      * equals method for SInt class
      */
@@ -249,6 +246,6 @@ public class SInt implements ISNum, ISString{
 
     @Override
     public String toString() {
-        return "SInt{" + val + "}";
+        return Integer.toString(val);
     }
 }

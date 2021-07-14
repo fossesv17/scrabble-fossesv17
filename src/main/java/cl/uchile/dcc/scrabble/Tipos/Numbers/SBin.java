@@ -1,14 +1,20 @@
-package cl.uchile.dcc.scrabble.Tipos;
+package cl.uchile.dcc.scrabble.Tipos.Numbers;
+
+import cl.uchile.dcc.scrabble.Tipos.AbstractSScrable;
+import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Tipos.Logical.ISLogic;
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.SString;
 
 import java.util.Objects;
 
 /**
  * Scrabble binary class
  */
-public class SBin implements ISNum, ISLogic, ISString{
+public class SBin extends AbstractSScrable implements ISNum, ISLogic {
     private String bin = "0";
-    SBin(){}
-    SBin(String binary){
+    public SBin(){}
+    public SBin(String binary){
         bin = binary;
     }
 
@@ -19,39 +25,23 @@ public class SBin implements ISNum, ISLogic, ISString{
         return bin;
     }
 
-    @Override
-    public SString Sconcat(ISString a) {
-        return a.elseCon(this);
-    }
 
     @Override
-    public SString SStringCon(SString S) {
-        String s1 = S.getString();
-        String s2 = bin;
-        return new SString(s1.concat(s2));
-    }
-
-    @Override
-    public SString elseCon(ISString Ec) {
-        return null;
-    }
-
-    @Override
-    public ISLogic neg() {
+    public IStype neg() {
         String nb = "";
         for (int i=0;i<bin.length();i++){
-            nb=nb.concat(Character.toString(bin.charAt(i)=='1'? 0:1));
+            nb=nb.concat(Character.toString(bin.charAt(i)=='1'? '0' : '1'));
         }
         return new SBin(nb);
     }
 
     @Override
-    public ISLogic and(ISLogic a) {
+    public IStype and(IStype a) {
         return a.binAnd(this);
     }
 
     @Override
-    public ISLogic binAnd(SBin Sb) {
+    public IStype binAnd(SBin Sb) {
         String ret = "";
         String bin1 = Sb.getBin();
         String bin2 = this.getBin();
@@ -81,7 +71,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISLogic boolAnd(SBool Sb) {
+    public IStype boolAnd(SBool Sb) {
 
         if (Sb.getVal()){
             return new SBin(bin);
@@ -96,12 +86,12 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISLogic or(ISLogic a) {
+    public IStype or(IStype a) {
         return a.binOr(this);
     }
 
     @Override
-    public ISLogic binOr(SBin Sb) {
+    public IStype binOr(SBin Sb) {
         String ret = "";
         String bin1 = Sb.getBin();
         String bin2 = this.getBin();
@@ -131,7 +121,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISLogic boolOr(SBool Sb) {
+    public IStype boolOr(SBool Sb) {
         if (Sb.getVal()){
             String ret = "";
             for (int i=0;i<bin.length();i++){
@@ -202,7 +192,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISNum Suma(ISNum a) {
+    public IStype Suma(IStype a) {
         return a.BinSum(this);
     }
 
@@ -229,7 +219,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISNum Resta(ISNum a) {
+    public IStype Resta(IStype a) {
         return a.BinResta(this);
     }
 
@@ -255,7 +245,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISNum Multi(ISNum a) {
+    public IStype Multi(IStype a) {
         return a.BinMul(this);
     }
 
@@ -282,7 +272,7 @@ public class SBin implements ISNum, ISLogic, ISString{
     }
 
     @Override
-    public ISNum Div(ISNum a) {
+    public IStype Divn(IStype a) {
         return a.BinDiv(this);
     }
 
@@ -308,12 +298,14 @@ public class SBin implements ISNum, ISLogic, ISString{
         return r.toBin();
     }
 
+
+
     /**
      * method that returns a string representation of an object
      */
     @Override
     public String toString() {
-        return "SBin{"+bin+"}";
+        return bin;
     }
 
     /**

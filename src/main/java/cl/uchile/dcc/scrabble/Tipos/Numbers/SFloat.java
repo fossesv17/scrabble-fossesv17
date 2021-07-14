@@ -1,11 +1,15 @@
-package cl.uchile.dcc.scrabble.Tipos;
+package cl.uchile.dcc.scrabble.Tipos.Numbers;
+
+import cl.uchile.dcc.scrabble.Tipos.AbstractSScrable;
+import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Tipos.SString;
 
 import java.util.Objects;
 
-public class SFloat implements ISNum, ISString{
+public class SFloat extends AbstractSScrable implements ISNum {
     private double val = 0;
-    SFloat(){}
-    SFloat(double value){
+    public SFloat(){}
+    public SFloat(double value){
         val = value;
     }
 
@@ -26,22 +30,7 @@ public class SFloat implements ISNum, ISString{
         return new SString(Double.toString(this.val));
     }
 
-    @Override
-    public SString Sconcat(ISString a) {
-        return a.elseCon(this);
-    }
 
-    @Override
-    public SString SStringCon(SString S){
-        String s1=S.getString();
-        String s2 = Double.toString(val);
-        return new SString(s1.concat(s2));
-    }
-
-    @Override
-    public SString elseCon(ISString Ec) {
-        return null;
-    }
 
     @Override
     public SInt toInt() {
@@ -53,8 +42,12 @@ public class SFloat implements ISNum, ISString{
         return null;
     }
 
+    //invalid op
+    public IStype and(IStype a){ return a.FloatAnd(this);}
+    public IStype or(IStype a){ return a.FloatOr(this);}
+
     @Override
-    public ISNum Suma(ISNum a) {
+    public IStype Suma(IStype a) {
         return a.FloatSum(this);
     }
 
@@ -76,7 +69,7 @@ public class SFloat implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Resta(ISNum a) {
+    public IStype Resta(IStype a) {
         return a.FloatResta(this);
     }
 
@@ -100,7 +93,7 @@ public class SFloat implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Multi(ISNum a) {
+    public IStype Multi(IStype a) {
         return a.FloatMul(this);
     }
 
@@ -124,7 +117,7 @@ public class SFloat implements ISNum, ISString{
     }
 
     @Override
-    public ISNum Div(ISNum a) {
+    public IStype Divn(IStype a) {
         return a.FloatDiv(this);
     }
 
@@ -167,7 +160,7 @@ public class SFloat implements ISNum, ISString{
 
     @Override
     public String toString() {
-        return "SFloat{" + val + "}";
+        return Double.toString(val);
     }
 
 }
