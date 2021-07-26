@@ -29,6 +29,16 @@ public class TestAST {
     }
 
     @Test
+    void transOnTreesTest(){
+        var a = new Add(new SBin("01"),new SBin("01")).toInt();
+        var aexp = new SInt(2);
+        assertEquals(aexp,a);
+        var b = new Add(new SFloat(1.0),new SInt(1)).toBool();
+        assertNull(b);
+        var c = new Sub(new Add(SI,SF).toBool(),SI);
+        assertNull(c.eval());
+    }
+    @Test
     void addTest(){
         var a = new Add(SI,SF);
         var aactual = a.eval();
@@ -46,7 +56,6 @@ public class TestAST {
         assertNull(e.eval());
         var f = new Add(new Add(SBL,SS),SBL);
         assertNull(f.eval());
-
     }
     @Test
     void subTest(){

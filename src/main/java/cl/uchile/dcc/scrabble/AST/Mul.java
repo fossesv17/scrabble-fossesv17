@@ -16,13 +16,19 @@ public class Mul extends AbstractBinTree{
      */
     @Override
     public IStype oper(){
-        IStype l = getLeftNode().eval();
-        IStype r = getRightNode().eval();
+        AST l = getLeftNode();
+        AST r = getRightNode();
         if (l==null || r==null){
             return null;
         }
         else {
-            return l.Multi(r);
+            IStype le = l.eval();
+            IStype re = r.eval();
+            if (le == null || re == null) {
+                return null;
+            } else {
+                return le.Multi(re);
+            }
         }
     }
 }

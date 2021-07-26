@@ -14,7 +14,6 @@ cl\uchile\dcc\scrabble\Tipos\Numbers\SFloat.class
 cl\uchile\dcc\scrabble\Builder\ScrabbleBuilder.class
 cl\uchile\dcc\scrabble\Tipos\Numbers\ISNum.class
 cl\uchile\dcc\scrabble\AST\Div.class
-cl\uchile\dcc\scrabble\gui\Scrabble.class
 cl\uchile\dcc\scrabble\AST\Neg.class
 cl\uchile\dcc\scrabble\Tipos\Numbers\SBin.class
 cl\uchile\dcc\scrabble\Tipos\SString.class

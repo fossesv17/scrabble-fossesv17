@@ -1,6 +1,73 @@
 package cl.uchile.dcc.scrabble.Builder;
 
+import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
+import cl.uchile.dcc.scrabble.Tipos.SString;
+
+import java.util.HashMap;
+
+/**
+ * Scrabble Builder class to create Scrabble types and save them in cache
+ * so it saves memory.
+ */
 public class ScrabbleBuilder {
-    private String value;
-    
+    HashMap<String, IStype> cache;
+
+    /**
+     * Scrabble Builder constructor
+     */
+    public ScrabbleBuilder(){};
+
+    /**
+     * method to create Scrabble Strings
+     * @param s string to create SString
+     */
+    public void createSString(String s){
+        IStype v = new SString(s);
+        String id = s.concat("S");
+        cache.put(id,v);
+    }
+
+    /**
+     * method to create Scrabble Integers
+     * @param i integer value for the SInt
+     */
+    public void createSInt(int i){
+        IStype v = new SInt(i);
+        String id = v.toString().concat("I");
+        cache.put(id,v);
+    }
+
+    /**
+     * method to create Scrabble FLoats
+     * @param d float value to create the SFloat
+     */
+    public void createSFloat(double d){
+        IStype v = new SFloat(d);
+        String id = v.toString().concat("F");
+        cache.put(id,v);
+    }
+
+    /**
+     * method to create Scrabble Binary numbers
+     * @param b binary string to create the SBin
+     */
+    public void createSBin(String b){
+        IStype v = new SBin(b);
+        String id = b.concat("B");
+        cache.put(id,v);
+    }
+
+    /**
+     * method to create Scrabble Bool type
+     * @param b boolean value to create the SBool
+     */
+    public void createSBool(boolean b){
+        IStype v = new SBool(b);
+        String id = v.toString().concat("BL");
+        cache.put(id,v);
+    }
 }
