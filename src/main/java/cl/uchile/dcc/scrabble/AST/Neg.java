@@ -16,12 +16,59 @@ public class Neg implements AST{
      * @return tree node negated
      */
     public IStype eval() {
-        IStype res = Node.eval();
-        if (res == null) {
+        AST node = Node;
+        if (node == null) {
             return null;
         } else {
-            return res.neg();
+            IStype evnod = node.eval();
+            if (evnod==null){
+                return null;
+            }
+            else {
+                return evnod.neg();
+            }
         }
     }
+
+    /**
+     * to Integer transformation for trees
+     * @return evaluated tree transformed to int
+     */
+    public IStype toInt() {
+        return this.eval().toInt();
+    }
+
+    /**
+     * to float transformation for trees
+     * @return evaluated tree transformed to float
+     */
+    public IStype toFloat() {
+        return this.eval().toFloat();
+    }
+
+    /**
+     * to  binary transformation for trees
+     * @return evaluated tree transformed to binary number
+     */
+    public IStype toBin() {
+        return this.eval().toBin();
+    }
+
+    /**
+     * to scrabble string transformation for trees
+     * @return evaluated tree transformed to a scrabble string
+     */
+    public IStype StoString() {
+        return this.eval().StoString();
+    }
+
+    /**
+     * to boolean transformation for trees
+     * @return evaluated tree transformed to a bool
+     */
+    public IStype toBool() {
+        return this.eval().toBool();
+    }
+
 
 }

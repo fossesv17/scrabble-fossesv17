@@ -6,14 +6,16 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  * Abstract Binary Tree class to hold the expected behaviour of any kind of scrabble tree
  */
 public class AbstractBinTree implements AST {
-    private AST leftNode;
-    private AST rightNode;
+    private AST leftNode=null;
+    private AST rightNode=null;
+
 
     /**
      * BinTree constructor
      * @param LeftNode BinTree left leaf
      * @param RightNode BinTree right leaf
      */
+
     public AbstractBinTree(AST LeftNode, AST RightNode){
         leftNode=LeftNode;
         rightNode=RightNode;
@@ -50,6 +52,46 @@ public class AbstractBinTree implements AST {
      */
     public IStype oper(){
         return null;
+    }
+
+    /**
+     * to Integer transformation for trees
+     * @return evaluated tree transformed to int
+     */
+    public IStype toInt() {
+        return this.eval().toInt();
+    }
+
+    /**
+     * to float transformation for trees
+     * @return evaluated tree transformed to float
+     */
+    public IStype toFloat() {
+        return this.eval().toFloat();
+    }
+
+    /**
+     * to  binary transformation for trees
+     * @return evaluated tree transformed to binary number
+     */
+    public IStype toBin() {
+        return this.eval().toBin();
+    }
+
+    /**
+     * to scrabble string transformation for trees
+     * @return evaluated tree transformed to a scrabble string
+     */
+    public IStype StoString() {
+        return this.eval().StoString();
+    }
+
+    /**
+     * to boolean transformation for trees
+     * @return evaluated tree transformed to a bool
+     */
+    public IStype toBool() {
+        return this.eval().toBool();
     }
 
 
