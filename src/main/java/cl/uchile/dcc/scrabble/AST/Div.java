@@ -14,6 +14,11 @@ public class Div extends AbstractBinTree {
         super();
     }
 
+    /**
+     * Div tree constructor
+     * @param I left leaf/Node
+     * @param D right leaf/Node
+     */
     public Div(AST I, AST D){
         super(I,D);
     }

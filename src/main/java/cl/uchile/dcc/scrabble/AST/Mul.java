@@ -15,6 +15,11 @@ public class Mul extends AbstractBinTree{
         super();
     }
 
+    /**
+     * Mul tree constructor
+     * @param I left leaf/node
+     * @param D right leaf/node
+     */
     public Mul(AST I, AST D){
         super(I,D);
     }
