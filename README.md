@@ -54,8 +54,8 @@ Once you get that running you should have something like this on your screen
 
 ![image info](./images/Calc.PNG)
 
-It is important to note that this calculator follows prefix notation, that means that the operations it is noted before
-the operands, eg. + 1 2 = 3, so inputs should be made in that manner.
+It is important to note that this calculator follows prefix notation, that means that the operations are noted before
+the operands, eg. + 1 2 = 3, so inputs should be made in the same manner.
 
 For example
 
