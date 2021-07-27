@@ -56,16 +56,4 @@ public class ControllerTest {
         assertEquals(new SBool(false), CC.calculate());
     }
 
-    @Test
-    void toStringRepresentation(){
-        CC.AddOp();
-        CC.UpdateSRes();
-        System.out.println(CC.getSres());
-        CC.addIntVar("1");
-        CC.UpdateSRes();
-        System.out.println(CC.getSres());
-        CC.addIntVar("1");
-        CC.UpdateSRes();
-        System.out.println(CC.getSres());
-    }
 }
