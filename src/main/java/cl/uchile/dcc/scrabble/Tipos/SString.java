@@ -17,7 +17,10 @@ public class SString extends AbstractSScrable implements IStype {
     }
 
 
-
+    /**
+     * transformation to Scrabble String
+     * @return SString resulting of transformation
+     */
     @Override
     public SString StoString() {
         return new SString(string);

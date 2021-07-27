@@ -11,6 +11,10 @@ public class Neg implements AST{
     private AST Node=null;
     public Neg(){};
 
+    /**
+     * Negation tree constructor
+     * @param N Node/leaf/value to be negated
+     */
     public Neg(AST N){
         Node=N;
     }

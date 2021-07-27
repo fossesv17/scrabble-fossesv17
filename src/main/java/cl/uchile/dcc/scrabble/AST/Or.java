@@ -9,6 +9,12 @@ public class Or extends AbstractBinTree {
     public Or(){
         super();
     }
+
+    /**
+     * Or operation tree constructor
+     * @param I left leaf/node/operand
+     * @param D left leaf/node/operand
+     */
     public Or(AST I, AST D){
         super(I,D);
     }

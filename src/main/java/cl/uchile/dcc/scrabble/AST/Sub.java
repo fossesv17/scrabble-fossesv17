@@ -10,6 +10,11 @@ public class Sub extends AbstractBinTree{
         super();
     }
 
+    /**
+     * Substraction tree
+     * @param I left leaf/node/operand
+     * @param D right leaf/node/operand
+     */
     public Sub(AST I, AST D){
         super(I,D);
     }
