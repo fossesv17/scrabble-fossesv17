@@ -6,6 +6,10 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  * Subtraction Operation tree
  */
 public class Sub extends AbstractBinTree{
+    public Sub(){
+        super();
+    }
+
     public Sub(AST I, AST D){
         super(I,D);
     }
@@ -30,5 +34,15 @@ public class Sub extends AbstractBinTree{
                 return le.Resta(re);
             }
         }
+    }
+    @Override
+    public String toString() {
+        if (getLeftNode()==null){
+            return "Sub()";
+        }
+        else if (getRightNode()==null){
+            return "Sub("+getLeftNode().toString()+", )";
+        }
+        return "Sub("+ getLeftNode().toString() + ", "+ getRightNode().toString() +")";
     }
 }

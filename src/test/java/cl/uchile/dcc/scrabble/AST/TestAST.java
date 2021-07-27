@@ -162,4 +162,5 @@ public class TestAST {
         var b = new Add(SBL,new Mul(SS,SF));
         assertNull(b.eval());
     }
+
 }

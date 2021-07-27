@@ -7,6 +7,14 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  */
 public class And extends AbstractBinTree{
     /**
+     * And tree constructor without arguments
+     */
+
+    public And(){
+        super();
+    }
+
+    /**
      * Constructor
      * @param I left leaf
      * @param D right leaf
@@ -35,5 +43,15 @@ public class And extends AbstractBinTree{
                 return le.and(re);
             }
         }
+    }
+    @Override
+    public String toString() {
+        if (getLeftNode()==null){
+            return "And()";
+        }
+        else if (getRightNode()==null){
+            return "And("+getLeftNode().toString()+", )";
+        }
+        return "And("+ getLeftNode().toString() + ", "+ getRightNode().toString() +")";
     }
 }

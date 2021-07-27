@@ -6,6 +6,13 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  * Division operation tree
  */
 public class Div extends AbstractBinTree {
+    /**
+     * Div tree constructor without arguments
+     */
+
+    public Div(){
+        super();
+    }
 
     public Div(AST I, AST D){
         super(I,D);
@@ -31,6 +38,16 @@ public class Div extends AbstractBinTree {
                 return le.Divn(re);
             }
         }
+    }
+    @Override
+    public String toString() {
+        if (getLeftNode()==null){
+            return "Div()";
+        }
+        else if (getRightNode()==null){
+            return "Div("+getLeftNode().toString()+", )";
+        }
+        return "Div("+ getLeftNode().toString() + ", "+ getRightNode().toString() +")";
     }
 
 }

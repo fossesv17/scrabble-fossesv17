@@ -2,11 +2,15 @@ package cl.uchile.dcc.scrabble.AST;
 
 import cl.uchile.dcc.scrabble.Tipos.IStype;
 
+import java.util.HashMap;
+
 /**
  * Logical Negation Operation Unary tree
  */
 public class Neg implements AST{
-    private AST Node;
+    private AST Node=null;
+    public Neg(){};
+
     public Neg(AST N){
         Node=N;
     }
@@ -70,5 +74,35 @@ public class Neg implements AST{
         return this.eval().toBool();
     }
 
+    /**
+     * method to add a variable to a Neg tree
+     */
+    public void addVar(HashMap<String,IStype> cache, String id){
+        if (Node==null){
+            Node=cache.get(id);
+        }
+        else {
+            Node.addVar(cache,id);
+        }
+    }
+
+    /**
+     * method to add a operation tree to a Neg tree
+     */
+    public void addOp(AST op){
+        if (Node==null){
+            Node=op;
+        }
+        else {
+            Node.addOp(op);
+        }
+    }
+    @Override
+    public String toString() {
+        if (Node==null){
+            return "Neg()";
+        }
+        return "Neg("+ Node.toString() +")";
+    }
 
 }

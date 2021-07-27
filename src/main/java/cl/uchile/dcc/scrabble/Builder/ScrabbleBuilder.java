@@ -14,12 +14,20 @@ import java.util.HashMap;
  * so it saves memory.
  */
 public class ScrabbleBuilder {
-    HashMap<String, IStype> cache;
+    private HashMap<String, IStype> cache= new HashMap<>();
 
     /**
      * Scrabble Builder constructor
      */
     public ScrabbleBuilder(){};
+
+    /**
+     * Cache getter
+     * @return Builder cache of scrabble types
+     */
+    public HashMap<String,IStype> getCache(){
+        return cache;
+    };
 
     /**
      * method to create Scrabble Strings
@@ -28,7 +36,7 @@ public class ScrabbleBuilder {
     public void createSString(String s){
         IStype v = new SString(s);
         String id = s.concat("S");
-        cache.put(id,v);
+        cache.putIfAbsent(id, v);
     }
 
     /**
@@ -38,7 +46,7 @@ public class ScrabbleBuilder {
     public void createSInt(int i){
         IStype v = new SInt(i);
         String id = v.toString().concat("I");
-        cache.put(id,v);
+        cache.putIfAbsent(id,v);
     }
 
     /**
@@ -48,7 +56,7 @@ public class ScrabbleBuilder {
     public void createSFloat(double d){
         IStype v = new SFloat(d);
         String id = v.toString().concat("F");
-        cache.put(id,v);
+        cache.putIfAbsent(id,v);
     }
 
     /**
@@ -58,7 +66,7 @@ public class ScrabbleBuilder {
     public void createSBin(String b){
         IStype v = new SBin(b);
         String id = b.concat("B");
-        cache.put(id,v);
+        cache.putIfAbsent(id,v);
     }
 
     /**
@@ -68,6 +76,6 @@ public class ScrabbleBuilder {
     public void createSBool(boolean b){
         IStype v = new SBool(b);
         String id = v.toString().concat("BL");
-        cache.put(id,v);
+        cache.putIfAbsent(id,v);
     }
 }

@@ -7,6 +7,14 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  */
 public class Add extends AbstractBinTree{
     /**
+     * Add tree constructor without arguments
+     */
+
+    public Add(){
+        super();
+    }
+
+    /**
      * Constructor for Addition Tree
      * @param I left leaf
      * @param D right leaf
@@ -19,6 +27,7 @@ public class Add extends AbstractBinTree{
      * method that applies addition method on the leaves
      * @return sum of the leaves
      */
+
     @Override
     public IStype oper(){
         AST l = getLeftNode();
@@ -35,5 +44,16 @@ public class Add extends AbstractBinTree{
                 return le.Suma(re);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        if (getLeftNode()==null){
+            return "Add()";
+        }
+        else if (getRightNode()==null){
+            return "Add("+getLeftNode().toString()+", )";
+        }
+        return "Add("+ getLeftNode().toString() + ", "+ getRightNode().toString() +")";
     }
 }

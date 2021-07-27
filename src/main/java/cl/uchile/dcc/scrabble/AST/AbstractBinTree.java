@@ -2,6 +2,8 @@ package cl.uchile.dcc.scrabble.AST;
 
 import cl.uchile.dcc.scrabble.Tipos.IStype;
 
+import java.util.HashMap;
+
 /**
  * Abstract Binary Tree class to hold the expected behaviour of any kind of scrabble tree
  */
@@ -9,6 +11,11 @@ public class AbstractBinTree implements AST {
     private AST leftNode=null;
     private AST rightNode=null;
 
+    /**
+     * BinTree constructor without arguments
+     */
+
+    public AbstractBinTree(){};
 
     /**
      * BinTree constructor
@@ -94,6 +101,30 @@ public class AbstractBinTree implements AST {
         return this.eval().toBool();
     }
 
+    /**
+     * method to add variable to a binary tree
+     */
+    @Override
+    public void addVar(HashMap<String,IStype> cache, String id){
+        if (leftNode==null && rightNode==null){
+            leftNode=cache.get(id);
+        }
+        else if (rightNode==null){
+            rightNode = cache.get(id);
+        }
+    }
 
+    /**
+     * method to add another operation tree to a binary tree
+     */
+    @Override
+    public void addOp(AST op){
+        if (leftNode==null){
+            leftNode=op;
+        }
+        else if (rightNode==null) {
+            rightNode = op;
+        }
+    }
 
 }

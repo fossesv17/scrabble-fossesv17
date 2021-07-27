@@ -6,6 +6,15 @@ import cl.uchile.dcc.scrabble.Tipos.IStype;
  * Multiplication operation tree
  */
 public class Mul extends AbstractBinTree{
+
+    /**
+     * Mul tree constructor without arguments
+     */
+
+    public Mul(){
+        super();
+    }
+
     public Mul(AST I, AST D){
         super(I,D);
     }
@@ -30,5 +39,15 @@ public class Mul extends AbstractBinTree{
                 return le.Multi(re);
             }
         }
+    }
+    @Override
+    public String toString() {
+        if (getLeftNode()==null){
+            return "Mul()";
+        }
+        else if (getRightNode()==null){
+            return "Mul("+getLeftNode().toString()+", )";
+        }
+        return "Mul("+ getLeftNode().toString() + ", "+ getRightNode().toString() +")";
     }
 }
