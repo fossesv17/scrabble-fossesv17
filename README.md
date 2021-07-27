@@ -13,7 +13,7 @@ _University of Chile_.
 
 ---
 
-## Sumary
+## Summary
 	
 The objective of this project is to recreate a simplified version of Scratch developed by 
 [_Scratch Foundation_] (https://scratch.mit.edu/). The idea is to be able to create a programming enviroment where
@@ -29,16 +29,56 @@ run and test in your personal machine
 -Java 11 or superior recommended
 -JUnit 5 or superior for testing
 -Intellij IDE to work and launch
--Gradle Build Tools
+-Gradle Build Tools or Maven
 
 ## Installing and Running tests
 Cloning the repository or downloading the zip file with the content will get you a copy of the project.
-Then opening it with Intellij and executing Gradle Build task will run all tests.
+Since throughout the project a migration to maven was made, now to run all
+the test you need to execute maven goal test.
 
 ## Data types
 
 For this project we will work with 3 basic types of data: _Strings_, _Booleans_ and _Numbers_
 where numbers will be subdivided in: _floats_, _integers_ and _binaries_.
+
+## Making it work
+In this section it will be detailed how to make the application run on your computer
+and how to make use of the calculator.
+
+first of all to make it run and actually appear on your screen you need to open
+the project with intelliJ and then there are two ways to run the app, one
+is to execute maven goal javafx:run or the other is to directly execute
+app.main() class situated in the gui package.
+
+Once you get that running you should have something like this on your screen
+
+![image info](./images/Calc.PNG)
+
+It is important to note that this calculator follows prefix notation, that means that the operations it is noted before
+the operands, eg. + 1 2 = 3, so inputs should be made in that manner.
+
+For example
+
+![image info](./images/Input.PNG)
+
+the upper text bar will show what you are inputing up to that moment, indicated with a red arrow
+and the text bar below works as the input where you type the numbers or strings to be calculated.
+to input a value you just have to type in the bar and press enter. If what you want to input is a string or a binary
+number you need to click on the respective button indicating the type of input before pressing enter, else you can
+get an error or not get the result one would expect.
+
+To the side there is a visual representation of the operation tree up to the moment before pressing "=" to get the result
+
+![image info](./images/CalcWorking.PNG)
+
+And the result after pressing the "=" button
+
+![image info](./images/res.PNG)
+
+it is important to note that at this point in development it is still not possible to make multiple operations
+in one line as recursive assignation of operations on the main operation tree has been a challenge. So only simple binary
+and unary operations can be done on the calculator right now.
+
 
 ## Work
 
@@ -81,7 +121,22 @@ Every operation was successfully implemented allowing to apply transformation on
 on each of the nodes of the tree.
 
 ### 4th assignment
-(WIP)
-For the 4th assignment the idea is to implement a system to declare and save variables with the purpose of saving memory
-the idea here is to make use of something between builder pattern and flyweight factory, since both of them allows to create
-Scrabble objects and save them in cache to save memory.
+An Scrabble type builder with cache was implemented to create every type required
+and save them in a hashMap binded by an id so they can be accessed every time it is needed
+as a way to save memory.
+
+### Final assignment
+For the final assignment a visual interface was to be implemented to represent a calculator
+that was able to work with scrabble types and show a graphic representation of 
+the abstract syntax tree that represents the operations. This was done using JavaFX libraries
+following an model-view-controller pattern of developing where the model is every
+scrabble type implemented with their logic, a controller that took advantage of the 
+AST implemented to communicate with the visual representation of a calculator.
+Sadly only simple binary operations can be done right now as recursion to add variables
+to the operations tree has been a challenge. This means that for now only
+operations like Add(1,2), Mul(4,5), or Neg(true) can be done. 
+
+
+### Example Images
+
+![image info](./images/Div.PNG) ![image info](./images/And.PNG)
