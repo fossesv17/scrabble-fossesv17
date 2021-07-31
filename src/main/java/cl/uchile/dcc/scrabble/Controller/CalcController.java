@@ -1,65 +1,64 @@
 package cl.uchile.dcc.scrabble.Controller;
 
-import cl.uchile.dcc.scrabble.AST.*;
-import cl.uchile.dcc.scrabble.Builder.ScrabbleBuilder;
-import cl.uchile.dcc.scrabble.Tipos.IStype;
+import cl.uchile.dcc.scrabble.Model.AST.*;
+import cl.uchile.dcc.scrabble.Model.Builder.ScrabbleBuilder;
+import cl.uchile.dcc.scrabble.Model.Builder.TreeBuilder;
+import cl.uchile.dcc.scrabble.Model.Tipos.IStype;
 
 /**
  * controller for the calculator
  */
 public class CalcController {
     private ScrabbleBuilder SB=new ScrabbleBuilder();
-    private AST res = null;
-    private int type_in=0;
+    private TreeBuilder TB = new TreeBuilder();
     private String Sres = "";
 
     /**
      * controller method to add create the add tree oper
      */
     public void AddOp(){
-        res = new Add();
+        TB.addOperation(new Add());
     }
 
     /**
      * controller method to add create the sub tree oper
      */
-    public void SubOp(){
-        res = new Sub();
+    public void SubOp() {
+        TB.addOperation(new Sub());
     }
-
     /**
      * controller method to add create the mul tree oper
      */
     public void MulOp(){
-        res = new Mul();
+        TB.addOperation(new Mul());
     }
 
     /**
      * controller method to add create the div tree oper
      */
     public void DivOp(){
-        res = new Div();
+        TB.addOperation(new Div());
     }
 
     /**
      * controller method to add create the and tree oper
      */
     public void AndOp(){
-        res = new And();
+        TB.addOperation(new And());
     }
 
     /**
      * controller method to add create the or tree oper
      */
     public void OrOp(){
-        res = new Or();
+        TB.addOperation(new Or());
     }
 
     /**
      * controller method to add create the neg tree oper
      */
     public void NegOp(){
-        res = new Neg();
+        TB.addOperation(new Neg());
     }
 
     /**
@@ -71,7 +70,8 @@ public class CalcController {
         int v = Integer.parseInt(val);
         String id = val.concat("I");
         SB.createSInt(v);
-        res.addVar(SB.getCache(),id);
+        IStype variable = SB.getCache().get(id);
+        TB.addVariable(variable);
     }
 
     /**
@@ -83,7 +83,8 @@ public class CalcController {
         double v = Double.parseDouble(val);
         String id = val.concat("F");
         SB.createSFloat(v);
-        res.addVar(SB.getCache(),id);
+        IStype variable = SB.getCache().get(id);
+        TB.addVariable(variable);
     }
 
     /**
@@ -94,7 +95,8 @@ public class CalcController {
     public void addBinVar(String val){
         String id = val.concat("B");
         SB.createSBin(val);
-        res.addVar(SB.getCache(),id);
+        IStype variable = SB.getCache().get(id);
+        TB.addVariable(variable);
     }
 
     /**
@@ -105,7 +107,8 @@ public class CalcController {
     public void addStringVar(String val){
         String id = val.concat("S");
         SB.createSString(val);
-        res.addVar(SB.getCache(),id);
+        IStype variable = SB.getCache().get(id);
+        TB.addVariable(variable);
     }
 
     /**
@@ -117,16 +120,22 @@ public class CalcController {
         boolean v = Boolean.parseBoolean(val);
         String id = val.concat("BL");
         SB.createSBool(v);
-        res.addVar(SB.getCache(),id);
+        IStype variable = SB.getCache().get(id);
+        TB.addVariable(variable);
     }
 
     /**
      * reduces the current operation tree to its value
      * @return value to which the tree evaluates to
      */
-    public IStype calculate(){
-        return res.eval();
+    public IStype calculate() {
+        if (TB.opTree() == null)
+            return null;
+        else {
+            return TB.opTree().eval();
+        }
     }
+
 
     /**
      * sets the controller state to default
@@ -135,25 +144,8 @@ public class CalcController {
      * string_representation of the tree = ""
      */
     public void setToDefault(){
-        res=null;
-        type_in=0;
         Sres = "";
-    }
-
-    /**
-     * getter for the actual input type
-     * @return current input type
-     */
-    public int getType_in() {
-        return type_in;
-    }
-
-    /**
-     * setter for input type
-     * @param t new input type value
-     */
-    public void setType_in(int t) {
-        this.type_in = t;
+        TB.clear();
     }
 
     /**
@@ -161,10 +153,12 @@ public class CalcController {
      * of the operation tree
      */
     public void UpdateSRes() {
-        if (res == null) {
-            Sres = "";
-        } else {
-            Sres = res.toString();
+        AST optree = TB.opTree();
+        if (optree==null){
+            Sres="";
+        }
+        else {
+            Sres = optree.toString();
         }
     }
 
@@ -173,7 +167,7 @@ public class CalcController {
      * @return current operation tree
      */
     public AST getRes() {
-        return res;
+        return TB.opTree();
     }
 
     /**

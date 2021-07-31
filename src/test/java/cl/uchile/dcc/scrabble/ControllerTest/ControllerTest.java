@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.ControllerTest;
 
 import cl.uchile.dcc.scrabble.Controller.CalcController;
-import cl.uchile.dcc.scrabble.Tipos.Logical.SBool;
-import cl.uchile.dcc.scrabble.Tipos.Numbers.SBin;
-import cl.uchile.dcc.scrabble.Tipos.Numbers.SFloat;
-import cl.uchile.dcc.scrabble.Tipos.Numbers.SInt;
-import cl.uchile.dcc.scrabble.Tipos.SString;
+import cl.uchile.dcc.scrabble.Model.Tipos.Logical.SBool;
+import cl.uchile.dcc.scrabble.Model.Tipos.Numbers.SBin;
+import cl.uchile.dcc.scrabble.Model.Tipos.Numbers.SFloat;
+import cl.uchile.dcc.scrabble.Model.Tipos.Numbers.SInt;
+import cl.uchile.dcc.scrabble.Model.Tipos.SString;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
