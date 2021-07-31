@@ -55,19 +55,26 @@ Once you get that running you should have something like this on your screen
 ![image info](./images/Calc.PNG)
 
 It is important to note that this calculator follows prefix notation, that means that the operations are noted before
-the operands, eg. + 1 2 = 3, so inputs should be made in the same manner.
-
-For example
+the operands, eg. + 1 2, so inputs should be made in the that manner.
 
 ![image info](./images/Input.PNG)
 
-the upper text bar will show what you are inputing up to that moment, indicated with a red arrow
-and the text bar below works as the input where you type the numbers or strings to be calculated.
-to input a value you just have to type in the bar and press enter. If what you want to input is a string or a binary
-number you need to click on the respective button indicating the type of input before pressing enter, else you can
-get an error or not get the result one would expect.
+indicated with a red arrow is the upper text bar that will show what you are inputing up to that moment,
+and the text bar below indicated with a blue arrow works as the input where you type the numbers or strings to be calculated.
 
-To the side there is a visual representation of the operation tree up to the moment before pressing "=" to get the result
+To make use of the calculator follow these instructions:
+
+- use prefix notation
+- enter operations using the buttons at your disposition
+- to input floats and integers type the number in the input field and press enter.
+- to input strings or binary numbers type the string/binary in the input field and click the
+ corresponding button, string or binary, no need to press enter.
+- to input boolean values(True/False) just click on the buttons, doesn't matter if you typed something or not.
+- once you are done entering the operations press the "=" button to calculate.
+
+To the side there is a visual representation of the operation tree. For now it will only show the tree nodes once they
+are properly operable, this means that an operation it will only appear in the tree representation if both of its
+operands have been entered.
 
 ![image info](./images/CalcWorking.PNG)
 
@@ -75,10 +82,18 @@ And the result after pressing the "=" button
 
 ![image info](./images/res.PNG)
 
-it is important to note that at this point in development it is still not possible to make multiple operations
-in one line as recursive assignation of operations on the main operation tree has been a challenge. So only simple binary
-and unary operations can be done on the calculator right now.
+Entering something wrong or trying to calculate something that cannot be done for example, adding a boolean with a number
+will result in the calculator showing syntax error.
 
+![image info](./images/Wrong.PNG) ![image info](./images/SyntaxError.PNG)
+
+And that's it for the calculator. Here are some examples of it working.
+
+![image info](./images/Example.PNG)
+![image info](./images/Example2.PNG)
+
+
+Note: At this point in development every operation is implemented except for transformations.
 
 ## Work
 
@@ -131,12 +146,8 @@ that was able to work with scrabble types and show a graphic representation of
 the abstract syntax tree that represents the operations. This was done using JavaFX libraries
 following an model-view-controller pattern of developing where the model is every
 scrabble type implemented with their logic, a controller that took advantage of the 
-AST implemented to communicate with the visual representation of a calculator.
-Sadly only simple binary operations can be done right now as recursion to add variables
-to the operations tree has been a challenge. This means that for now only
-operations like Add(1,2), Mul(4,5), or Neg(true) can be done. 
-
-
-### Example Images
-
-![image info](./images/Div.PNG) ![image info](./images/And.PNG)
+AST implemented to communicate with the visual representation of a calculator and of course the view
+which is the calculator. 
+Also a TreeBuilder was implemented to create the trees on the moment following
+the inputs that are made in the calculator. Right now, every operation can be
+computed by the calculator except for transformations.
